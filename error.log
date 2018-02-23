@@ -1,0 +1,8 @@
+
+HaskellFileWithErr.hs:3:15:
+    Couldn't match expected type ‘Int’ with actual type ‘Char’
+    In the expression: 'A'
+    In an equation for ‘function1’: function1 3 = 'A'
+
+Labs/Bash02/Bash02.hs:1:1:
+    The IO action ‘main’ is not defined in module ‘Main’
