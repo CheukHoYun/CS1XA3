@@ -4,13 +4,13 @@
 #I will create a main function to make a list of functionality and let users to choose from. 
  
 
-getInformation(){
+getInformation(){	#A simple function used to grab time and username. I wrote it to remind myself how bash scripts work.
 	theDate=$(date) && echo "The time now is: $theDate"
 	theUserName=$(whoami) && echo "Current User is: $theUserName"
 	return
 }
 
-checkUpdate(){
+checkUpdate(){	#This is required functionality 1, which is supposed to check if the repo is up-to-date or not. I don't want to see untracked files so I used -uno here.
 	echo "-------------------------------------------------------------"
 	git fetch && git status -uno
 	echo "-------------------------------------------------------------"
@@ -18,7 +18,7 @@ checkUpdate(){
 }
 
 
-uncommited(){
+uncommited(){	#This is required functionality 2, which is to grab all uncommited changes and put it into "changes.log". It allows user to see the log immediately if they want. Information from git status and git diff are both recorded.  
 	echo "-------------------------------------------------------------"
 	echo "Putting all uncommited changes into the file changes.log."
 	theDate=$(date) && echo $theDate$'\n' >> changes.log	
@@ -39,7 +39,7 @@ uncommited(){
 
 }
 
-extractTODO(){
+extractTODO(){	#This is required functionality 3. It looks into all files, find lines with #TODO (case sensitive), and output them into "todo.log".
 	echo "-------------------------------------------------------------"
 	echo "Extracting all lines with #TODO in the repository to the todo.log file."
 	if [ -e todo.log ]
@@ -61,7 +61,7 @@ extractTODO(){
 
 }
 
-findHaskellError(){
+findHaskellError(){	#This is required functionality 4. It looks into all Haskell files, try to (not actually) compile them, and find syntax errors if there are any. It won't work for non-moduled .hs files, unless you put a line of main=undefined in your file. 
 	echo "-------------------------------------------------------------"
 	echo "Searching for errors in Haskell files in repository. You will find the errors in error.log."
 	theDate=$(date) && echo $'\n'$theDate >> error.log	
@@ -79,12 +79,12 @@ findHaskellError(){
 	hold
 
 }
-hold(){
+hold(){	#This is a simple but extremely useful "Press any key to return" function. I use this function in basically every other function to prompt the user whenever a process is finished.
         read -n1 -r -p "Press any key to return to main menu..." key
 	
 }
 
-main(){
+main(){	#This is main. It shows time and username, and prints the main menu.
 	getInformation
 	while true; do
 	read -p $'Please enter a number:\n1.Required Functionalities\n2.Additional Functionalities\n3.Exit\n> ' choice1
@@ -96,8 +96,8 @@ main(){
 	esac
 	done
 }
-seeCourse(){
-	read -p $'Please enter a number:\n1.See course schedule.\n2.See grading scale.\n> ' choice3
+seeCourse(){	#This is the first feature of my own design. It grabs information from 1XA3 course page, and returns course schedule or grading scheme. 
+	read -p $'Please enter a number:\n1.See course schedule.\n2.See grading scheme.\n> ' choice3
         case "$choice3" in
                 1) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '35,57p' && hold;;
                 2) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '58,66p' && hold;;
@@ -106,7 +106,7 @@ seeCourse(){
 
 }
 
-seeGrade(){
+seeGrade(){	#This is the second feature of mine. It looks for our 1XA3 grades, print it, and outputs it into a .txt file if the user wants to.
         echo "-------------------------------------------------------------"
 	L1=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '7 Marks' | cut -f1 -d:)
 	L2=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '400160537' | cut -f1 -d:)	
@@ -126,7 +126,7 @@ seeGrade(){
 	hold	
 }
 
-subMenu1(){
+subMenu1(){	#This is the first sub-menu who works for the required features. Nothing special here.
 	read -p $'Please enter a number:\n1.Check if you repo is up to date.\n2.Ouput uncommited changes.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice2
         case "$choice2" in
                 1) checkUpdate;;
@@ -137,7 +137,7 @@ subMenu1(){
 	esac
 }
 
-backUp(){
+backUp(){	#This is the third feature of my own. It backups the whole repository as a .tar.gz file, and puts it under home directory.
 	echo "Starting the back-up process.."
 	cp -R ~/CS1XA3 ~/BackUp
 	tar czvf ~/Backup.tar.gz ~/BackUp
@@ -146,19 +146,15 @@ backUp(){
 	hold	
 }
 
-starWars(){
-	telnet towel.blinkenlights.nl
-}
 
-subMenu2(){
+subMenu2(){	#This is the 2nd sub-menu who works for the cutomized features. Nothing special.
 	read -p $'Please enter a number:\n1.See course information.\n2.See grades.\n3.Backup the repository.\n> ' choice4
         case "$choice4" in
                 1) seeCourse;;
                 2) seeGrade;;
 		3) backUp;;
-		4) starWars;;
 		*) subMenu2;;
 	esac
 }	
 
-main
+main	#main is the only function called when you start the script.
