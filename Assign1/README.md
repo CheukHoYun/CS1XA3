@@ -28,4 +28,11 @@ Type in '2' and then '2', and you can get access to 1XA3 students' current grade
 ### Feature 2-3
 Type in '2' and then '3', and the whole repository will be backed up as a .tar.gz file. The backup file will be under the user's home (~) directory.
 ### Feature 3-3
-Type in '3' and you will exit the program. 
+Type in '3' and you will exit the program.
+
+## Other stuff
+*	There are several test files under root of the repository. (HaskellFileWithErr.hs, HaskellFileWithoutErr.hs, testFileWithTodo.txt) They are just test files, and won't affect how script works. 
+*	Do not move the script to other directories or it won't work. For laziness I use current directory (or even ignore the directory) whenever possible. For example, I do `find . -name blahblah` and `grep *`. If you move the script to other places, these code will go wrong. 
+*	I used a simple way to grab course outline (line numbers). If new contents are added into the page, the line numbers may change, and the function may stop working properly. The format of the printed course schedule in feature 2-1 is a mess, but I don't want to fix it since it's still readable. 
+* 	The script will always grab newest grade information, and line changes won't affect this function.
+*	For feature 1-4, if your haskell file is non-moduled, you would need to add 'main=undefined' to your file, or other syntax errors won't be found. 
