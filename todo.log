@@ -1,6 +1,5 @@
-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
-	grep -rh '#TODO' * > todo.log
 I plug a #TODO here.
 Another #TODO there.
 #TODO in the front.
 I love #TODOs.
+     * Puts each line from every file of your project with the tag #TODO

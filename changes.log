@@ -1,0 +1,1195 @@
+Sat Feb 24 13:37:43 EST 2018
+
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ProjectAnalyze.sh
+	modified:   error.log
+	modified:   todo.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+diff --git a/ProjectAnalyze.sh b/ProjectAnalyze.sh
+index 60d9e35..586f6a0 100755
+--- a/ProjectAnalyze.sh
++++ b/ProjectAnalyze.sh
+@@ -5,9 +5,8 @@
+  
+ 
+ getInformation(){
+-	theDate=$(date) && echo "The date today is: $theDate"
++	theDate=$(date) && echo "The time now is: $theDate"
+ 	theUserName=$(whoami) && echo "Current User is: $theUserName"
+-	echo " "
+ 	return
+ }
+ 
+@@ -45,7 +44,7 @@ extractTODO(){
+ 	echo "-------------------------------------------------------------"
+ 	echo "Extracting all lines with #TODO in the repository to the todo.log file."
+ 	rm todo.log
+-	grep -rh '#TODO' * > todo.log
++	grep -rh '#TODO' *[!ProjectAnalyze.sh]*[.sh] > todo.log
+ 	echo "Jobs done."
+ 	echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+@@ -81,6 +80,7 @@ findHaskellError(){
+ }
+ 
+ main(){
++	getInformation
+ 	while true; do
+ 	read -p $'Please enter a number:\n1.Required Functionalities\n2.Additional Functionalities\n3.Exit\n> ' choice1
+ 	case "$choice1" in
+diff --git a/error.log b/error.log
+index 0edf80c..3aa6ae5 100644
+--- a/error.log
++++ b/error.log
+@@ -1,67 +1,5 @@
+ 
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-Fri Feb 23 09:47:16 EST 2018
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-$theDate
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-Fri Feb 23 09:49:32 EST 2018
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-Fri Feb 23 10:44:23 EST 2018
++Sat Feb 24 13:25:42 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -71,7 +9,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 11:00:22 EST 2018
++Sat Feb 24 13:33:45 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+diff --git a/todo.log b/todo.log
+index 65fd9d0..a2ab076 100644
+--- a/todo.log
++++ b/todo.log
+@@ -1,5 +1,3 @@
+-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
+-	grep -rh '#TODO' * > todo.log
+ I plug a #TODO here.
+ Another #TODO there.
+ #TODO in the front.
+Sat Feb 24 13:38:58 EST 2018
+
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ProjectAnalyze.sh
+	modified:   error.log
+	modified:   todo.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+diff --git a/ProjectAnalyze.sh b/ProjectAnalyze.sh
+index 60d9e35..320e11c 100755
+--- a/ProjectAnalyze.sh
++++ b/ProjectAnalyze.sh
+@@ -5,9 +5,8 @@
+  
+ 
+ getInformation(){
+-	theDate=$(date) && echo "The date today is: $theDate"
++	theDate=$(date) && echo "The time now is: $theDate"
+ 	theUserName=$(whoami) && echo "Current User is: $theUserName"
+-	echo " "
+ 	return
+ }
+ 
+@@ -45,7 +44,7 @@ extractTODO(){
+ 	echo "-------------------------------------------------------------"
+ 	echo "Extracting all lines with #TODO in the repository to the todo.log file."
+ 	rm todo.log
+-	grep -rh '#TODO' * > todo.log
++	grep -rh '#TODO' *[!ProjectAnalyze.sh]* > todo.log
+ 	echo "Jobs done."
+ 	echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+@@ -81,6 +80,7 @@ findHaskellError(){
+ }
+ 
+ main(){
++	getInformation
+ 	while true; do
+ 	read -p $'Please enter a number:\n1.Required Functionalities\n2.Additional Functionalities\n3.Exit\n> ' choice1
+ 	case "$choice1" in
+diff --git a/error.log b/error.log
+index 0edf80c..3aa6ae5 100644
+--- a/error.log
++++ b/error.log
+@@ -1,67 +1,5 @@
+ 
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-Fri Feb 23 09:47:16 EST 2018
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-$theDate
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-Fri Feb 23 09:49:32 EST 2018
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-Fri Feb 23 10:44:23 EST 2018
++Sat Feb 24 13:25:42 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -71,7 +9,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 11:00:22 EST 2018
++Sat Feb 24 13:33:45 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+diff --git a/todo.log b/todo.log
+index 65fd9d0..2abd0f0 100644
+--- a/todo.log
++++ b/todo.log
+@@ -1,5 +1,11 @@
+-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
+-	grep -rh '#TODO' * > todo.log
++ 	echo "Extracting all lines with #TODO in the repository to the todo.log file."
++-	grep -rh '#TODO' * > todo.log
+++	grep -rh '#TODO' *[!ProjectAnalyze.sh]*[.sh] > todo.log
++-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
++-	grep -rh '#TODO' * > todo.log
++ I plug a #TODO here.
++ Another #TODO there.
++ #TODO in the front.
+ I plug a #TODO here.
+ Another #TODO there.
+ #TODO in the front.
+Sat Feb 24 14:42:15 EST 2018
+
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ProjectAnalyze.sh
+	modified:   error.log
+	modified:   todo.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+diff --git a/ProjectAnalyze.sh b/ProjectAnalyze.sh
+index 60d9e35..8c426d1 100755
+--- a/ProjectAnalyze.sh
++++ b/ProjectAnalyze.sh
+@@ -5,9 +5,8 @@
+  
+ 
+ getInformation(){
+-	theDate=$(date) && echo "The date today is: $theDate"
++	theDate=$(date) && echo "The time now is: $theDate"
+ 	theUserName=$(whoami) && echo "Current User is: $theUserName"
+-	echo " "
+ 	return
+ }
+ 
+@@ -15,7 +14,7 @@ checkUpdate(){
+ 	echo "-------------------------------------------------------------"
+ 	git fetch && git status -uno
+ 	echo "-------------------------------------------------------------"
+-        read -n1 -r -p "Press any key to return to main menu..." key	
++	hold
+ }
+ 
+ 
+@@ -36,8 +35,7 @@ uncommited(){
+ 	echo "----------------------END OF LOG-----------------------------"
+ 	
+ 	fi
+-        read -n1 -r -p "Press any key to return to main menu..." key
+-
++	hold
+ 
+ }
+ 
+@@ -45,7 +43,7 @@ extractTODO(){
+ 	echo "-------------------------------------------------------------"
+ 	echo "Extracting all lines with #TODO in the repository to the todo.log file."
+ 	rm todo.log
+-	grep -rh '#TODO' * > todo.log
++	grep -rh --exclude={*.log,ProjectAnalyze.sh} '#TODO' *  > todo.log
+ 	echo "Jobs done."
+ 	echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+@@ -55,8 +53,7 @@ extractTODO(){
+ 		cat todo.log
+ 	echo "----------------------END OF LOG-----------------------------"
+ 	fi
+-        read -n1 -r -p "Press any key to return to main menu..." key
+-
++	hold
+ 
+ }
+ 
+@@ -75,12 +72,16 @@ findHaskellError(){
+ 	echo "----------------------END OF LOG-----------------------------"
+ 	
+ 	fi
+-        read -n1 -r -p "Press any key to return to main menu..." key
+-
++	hold
+ 
+ }
++hold(){
++        read -n1 -r -p "Press any key to return to main menu..." key
++	
++}
+ 
+ main(){
++	getInformation
+ 	while true; do
+ 	read -p $'Please enter a number:\n1.Required Functionalities\n2.Additional Functionalities\n3.Exit\n> ' choice1
+ 	case "$choice1" in
+@@ -91,6 +92,18 @@ main(){
+ 	esac
+ 	done
+ }
++seeCourse(){
++	read -p $'Please enter a number:\n1.See course outline.\n2.See grading scale.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice3
++        case "$choice3" in
++                1) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '35,57p' && hold;;
++                2) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '58,66p' && hold;;
++                3) extractTODO;;
++		4) findHaskellError;;
++		5) subMenu1;;
++		5) ;;
++	esac
++
++}
+ 
+ subMenu1(){
+ 	read -p $'Please enter a number:\n1.Check if you repo is up to date.\n2.Ouput uncommited changes.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice2
+@@ -99,13 +112,20 @@ subMenu1(){
+                 2) uncommited;;
+                 3) extractTODO;;
+ 		4) findHaskellError;;
+-		5) subMenu1;;
+-		5) ;;
++		*) subMenu1;;
+ 	esac
+ }
+ 
+ subMenu2(){
+-	echo "subMenu2 is also empty"
+-}
++	read -p $'Please enter a number:\n1.See course information.\n2.Ouput uncommited changes.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice4
++        case "$choice4" in
++                1) seeCourse;;
++                2) uncommited;;
++                3) extractTODO;;
++		4) findHaskellError;;
++		5) subMenu1;;
++		5) ;;
++	esac
++}	
+ 
+ main
+diff --git a/error.log b/error.log
+index 0edf80c..3aa6ae5 100644
+--- a/error.log
++++ b/error.log
+@@ -1,67 +1,5 @@
+ 
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-Fri Feb 23 09:47:16 EST 2018
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-$theDate
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-Fri Feb 23 09:49:32 EST 2018
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-Fri Feb 23 10:44:23 EST 2018
++Sat Feb 24 13:25:42 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -71,7 +9,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 11:00:22 EST 2018
++Sat Feb 24 13:33:45 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+diff --git a/todo.log b/todo.log
+index 65fd9d0..a2ab076 100644
+--- a/todo.log
++++ b/todo.log
+@@ -1,5 +1,3 @@
+-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
+-	grep -rh '#TODO' * > todo.log
+ I plug a #TODO here.
+ Another #TODO there.
+ #TODO in the front.
+Sat Feb 24 16:27:56 EST 2018
+
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ProjectAnalyze.sh
+	modified:   error.log
+	modified:   todo.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+diff --git a/ProjectAnalyze.sh b/ProjectAnalyze.sh
+index 60d9e35..b9b7167 100755
+--- a/ProjectAnalyze.sh
++++ b/ProjectAnalyze.sh
+@@ -5,9 +5,8 @@
+  
+ 
+ getInformation(){
+-	theDate=$(date) && echo "The date today is: $theDate"
++	theDate=$(date) && echo "The time now is: $theDate"
+ 	theUserName=$(whoami) && echo "Current User is: $theUserName"
+-	echo " "
+ 	return
+ }
+ 
+@@ -15,7 +14,7 @@ checkUpdate(){
+ 	echo "-------------------------------------------------------------"
+ 	git fetch && git status -uno
+ 	echo "-------------------------------------------------------------"
+-        read -n1 -r -p "Press any key to return to main menu..." key	
++	hold
+ }
+ 
+ 
+@@ -36,16 +35,19 @@ uncommited(){
+ 	echo "----------------------END OF LOG-----------------------------"
+ 	
+ 	fi
+-        read -n1 -r -p "Press any key to return to main menu..." key
+-
++	hold
+ 
+ }
+ 
+ extractTODO(){
+ 	echo "-------------------------------------------------------------"
+ 	echo "Extracting all lines with #TODO in the repository to the todo.log file."
+-	rm todo.log
+-	grep -rh '#TODO' * > todo.log
++	if [ -e todo.log ]
++	then
++		rm todo.log
++		echo "todo.log already exists. Removing it and creating a new one..."
++	fi
++	grep -rh --exclude={*.log,ProjectAnalyze.sh} '#TODO' *  > todo.log
+ 	echo "Jobs done."
+ 	echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+@@ -55,8 +57,7 @@ extractTODO(){
+ 		cat todo.log
+ 	echo "----------------------END OF LOG-----------------------------"
+ 	fi
+-        read -n1 -r -p "Press any key to return to main menu..." key
+-
++	hold
+ 
+ }
+ 
+@@ -75,12 +76,16 @@ findHaskellError(){
+ 	echo "----------------------END OF LOG-----------------------------"
+ 	
+ 	fi
+-        read -n1 -r -p "Press any key to return to main menu..." key
+-
++	hold
+ 
+ }
++hold(){
++        read -n1 -r -p "Press any key to return to main menu..." key
++	
++}
+ 
+ main(){
++	getInformation
+ 	while true; do
+ 	read -p $'Please enter a number:\n1.Required Functionalities\n2.Additional Functionalities\n3.Exit\n> ' choice1
+ 	case "$choice1" in
+@@ -91,6 +96,35 @@ main(){
+ 	esac
+ 	done
+ }
++seeCourse(){
++	read -p $'Please enter a number:\n1.See course schedule.\n2.See grading scale.\n> ' choice3
++        case "$choice3" in
++                1) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '35,57p' && hold;;
++                2) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '58,66p' && hold;;
++		*) ;;
++	esac
++
++}
++
++seeGrade(){
++        echo "-------------------------------------------------------------"
++	L1=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '7 Marks' | cut -f1 -d:)
++	L2=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '400160537' | cut -f1 -d:)	
++	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p'
++        echo "-------------------------------------------------------------"
++	read -p 'Do you want to export the grades?(Y/N)'$'\n' decision
++	if [[ "$decision" =~ ^(y|yes)$ ]]
++	then
++	if [ -e Grades.txt ]
++	then
++		rm Grades.txt
++		echo "Grades.txt already exists. Removing it and creating a new one..."
++	fi	
++	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p' > Grades.txt	
++	fi
++	echo "Done."	
++	hold	
++}
+ 
+ subMenu1(){
+ 	read -p $'Please enter a number:\n1.Check if you repo is up to date.\n2.Ouput uncommited changes.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice2
+@@ -99,13 +133,32 @@ subMenu1(){
+                 2) uncommited;;
+                 3) extractTODO;;
+ 		4) findHaskellError;;
+-		5) subMenu1;;
+-		5) ;;
++		*) subMenu1;;
+ 	esac
+ }
+ 
+-subMenu2(){
+-	echo "subMenu2 is also empty"
++backUp(){
++	echo "Starting the back-up process.."
++	cp -R ~/CS1XA3 ~/BackUp
++	tar czvf ~/Backup.tar.gz ~/BackUp
++	rm -rf ~/BackUp
++	echo "Back-up finished. You can now see the file \"Backup.tar.gz\" under your home directory."
++	hold	
++}
++
++starWars(){
++	telnet towel.blinkenlights.nl
+ }
+ 
++subMenu2(){
++	read -p $'Please enter a number:\n1.See course information.\n2.See grades.\n3.Backup the repository.\n> ' choice4
++        case "$choice4" in
++                1) seeCourse;;
++                2) seeGrade;;
++		3) backUp;;
++		4) starWars;;
++		*) subMenu2;;
++	esac
++}	
++
+ main
+diff --git a/error.log b/error.log
+index 0edf80c..62eb23b 100644
+--- a/error.log
++++ b/error.log
+@@ -1,57 +1,5 @@
+ 
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-Fri Feb 23 09:47:16 EST 2018
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-$theDate
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-Fri Feb 23 09:49:32 EST 2018
++Sat Feb 24 13:25:42 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -61,7 +9,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 10:44:23 EST 2018
++Sat Feb 24 13:33:45 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -71,7 +19,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 11:00:22 EST 2018
++Sat Feb 24 15:39:55 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+diff --git a/todo.log b/todo.log
+index 65fd9d0..40b91b1 100644
+--- a/todo.log
++++ b/todo.log
+@@ -1,6 +1,5 @@
+-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
+-	grep -rh '#TODO' * > todo.log
+ I plug a #TODO here.
+ Another #TODO there.
+ #TODO in the front.
+ I love #TODOs.
++     * Puts each line from every file of your project with the tag #TODO
+Sat Feb 24 17:12:23 EST 2018
+
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ProjectAnalyze.sh
+	modified:   error.log
+	modified:   todo.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+diff --git a/ProjectAnalyze.sh b/ProjectAnalyze.sh
+index 4f0dcda..2272468 100755
+--- a/ProjectAnalyze.sh
++++ b/ProjectAnalyze.sh
+@@ -10,9 +10,9 @@ getInformation(){	#A simple function used to grab time and username. I wrote it
+ 	return
+ }
+ 
+-checkUpdate(){	#This is required functionality 1, which is supposed to check if the repo is up-to-date or not. I don't want to see untracked files so I used -uno here.
++checkUpdate(){	#This is required functionality 1, which is supposed to check if the repo is up-to-date or not. 
+ 	echo "-------------------------------------------------------------"
+-	git fetch && git status -uno
++	git fetch && git status -uno	#Don't want to see untracked files, so I use -uno here.
+ 	echo "-------------------------------------------------------------"
+ 	hold
+ }
+@@ -21,14 +21,14 @@ checkUpdate(){	#This is required functionality 1, which is supposed to check if
+ uncommited(){	#This is required functionality 2, which is to grab all uncommited changes and put it into "changes.log". It allows user to see the log immediately if they want. Information from git status and git diff are both recorded.  
+ 	echo "-------------------------------------------------------------"
+ 	echo "Putting all uncommited changes into the file changes.log."
+-	theDate=$(date) && echo $theDate$'\n' >> changes.log	
++	theDate=$(date) && echo $theDate$'\n' >> changes.log	#Since it's a log, I would say including time for each record is nice.	
+ 	git fetch && git status -uno >> changes.log
+ 	echo $'\n' >> changes.log
+ 	git diff >> changes.log	
+ 	echo "Jobs done."
+ 	echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+-	if [[ "$seeLog" =~ ^(y|yes)$ ]]
++	if [[ "$seeLog" =~ ^(y|yes)$ ]]	#Either y,Y,yes or YES will work. Receiving other characters will return nothing.
+ 	then
+ 	echo "---------------------HEAD OF LOG-----------------------------"
+ 		cat changes.log
+@@ -42,12 +42,12 @@ uncommited(){	#This is required functionality 2, which is to grab all uncommited
+ extractTODO(){	#This is required functionality 3. It looks into all files, find lines with #TODO (case sensitive), and output them into "todo.log".
+ 	echo "-------------------------------------------------------------"
+ 	echo "Extracting all lines with #TODO in the repository to the todo.log file."
+-	if [ -e todo.log ]
++	if [ -e todo.log ]	#Check if the todo.log already exists. If it does, delete it.
+ 	then
+ 		rm todo.log
+ 		echo "todo.log already exists. Removing it and creating a new one..."
+ 	fi
+-	grep -rh --exclude={*.log,ProjectAnalyze.sh} '#TODO' *  > todo.log
++	grep -rh --exclude={*.log,ProjectAnalyze.sh} '#TODO' *  > todo.log	#This script itself won't be included, and any .log files won't be searched. I only want #TODOs with actual meaning, not the ones in code or logs.
+ 	echo "Jobs done."
+ 	echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+@@ -92,14 +92,14 @@ main(){	#This is main. It shows time and username, and prints the main menu.
+ 		1) subMenu1;;
+ 		2) subMenu2;;
+ 		3) break;;
+-		*) ;;
++		*) ;;	#For any unexpected input, continue the loop.
+ 	esac
+ 	done
+ }
+ seeCourse(){	#This is the first feature of my own design. It grabs information from 1XA3 course page, and returns course schedule or grading scheme. 
+ 	read -p $'Please enter a number:\n1.See course schedule.\n2.See grading scheme.\n> ' choice3
+         case "$choice3" in
+-                1) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '35,57p' && hold;;
++                1) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '35,57p' && hold;;	#It grabs the course page and cut information between certain lines. 
+                 2) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '58,66p' && hold;;
+ 		*) ;;
+ 	esac
+@@ -110,7 +110,7 @@ seeGrade(){	#This is the second feature of mine. It looks for our 1XA3 grades, p
+         echo "-------------------------------------------------------------"
+ 	L1=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '7 Marks' | cut -f1 -d:)
+ 	L2=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '400160537' | cut -f1 -d:)	
+-	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p'
++	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p'	#It looks for two keywords, returns their line numbers as variables, and pass these variables into sed to cut out the lines I want. This will always work even new contents are added onto the webpage, since it looks for the lines dynamically instead of using static line numbers.
+         echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to export the grades?(Y/N)'$'\n' decision
+ 	if [[ "$decision" =~ ^(y|yes)$ ]]
+@@ -120,14 +120,14 @@ seeGrade(){	#This is the second feature of mine. It looks for our 1XA3 grades, p
+ 		rm Grades.txt
+ 		echo "Grades.txt already exists. Removing it and creating a new one..."
+ 	fi	
+-	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p' > Grades.txt	
++	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p' > Grades.txt	#If the user wants, the script will output the grades into Grades.txt.	
+ 	fi
+ 	echo "Done."	
+ 	hold	
+ }
+ 
+ subMenu1(){	#This is the first sub-menu who works for the required features. Nothing special here.
+-	read -p $'Please enter a number:\n1.Check if you repo is up to date.\n2.Ouput uncommited changes.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice2
++	read -p $'Please enter a number:\n1.Check if your repo is up to date.\n2.Ouput uncommited changes.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice2
+         case "$choice2" in
+                 1) checkUpdate;;
+                 2) uncommited;;
+@@ -141,7 +141,7 @@ backUp(){	#This is the third feature of my own. It backups the whole repository
+ 	echo "Starting the back-up process.."
+ 	cp -R ~/CS1XA3 ~/BackUp
+ 	tar czvf ~/Backup.tar.gz ~/BackUp
+-	rm -rf ~/BackUp
++	rm -rf ~/BackUp	#For safety, I won't modify the original directory. I copy it, zip the copy, and remove the copy.
+ 	echo "Back-up finished. You can now see the file \"Backup.tar.gz\" under your home directory."
+ 	hold	
+ }
+@@ -157,4 +157,4 @@ subMenu2(){	#This is the 2nd sub-menu who works for the cutomized features. Noth
+ 	esac
+ }	
+ 
+-main	#main is the only function called when you start the script.
++main	#main is the only function called when script started.
+diff --git a/error.log b/error.log
+index 0edf80c..4c35665 100644
+--- a/error.log
++++ b/error.log
+@@ -1,47 +1,5 @@
+ 
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-Fri Feb 23 09:47:16 EST 2018
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-$theDate
++Sat Feb 24 13:25:42 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -51,7 +9,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 09:49:32 EST 2018
++Sat Feb 24 13:33:45 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -61,7 +19,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 10:44:23 EST 2018
++Sat Feb 24 15:39:55 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -71,7 +29,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 11:00:22 EST 2018
++Sat Feb 24 16:28:42 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+diff --git a/todo.log b/todo.log
+index 65fd9d0..40b91b1 100644
+--- a/todo.log
++++ b/todo.log
+@@ -1,6 +1,5 @@
+-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
+-	grep -rh '#TODO' * > todo.log
+ I plug a #TODO here.
+ Another #TODO there.
+ #TODO in the front.
+ I love #TODOs.
++     * Puts each line from every file of your project with the tag #TODO
+Sat Feb 24 17:16:11 EST 2018
+
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   ProjectAnalyze.sh
+	modified:   error.log
+	modified:   todo.log
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+
+diff --git a/ProjectAnalyze.sh b/ProjectAnalyze.sh
+index 4f0dcda..2272468 100755
+--- a/ProjectAnalyze.sh
++++ b/ProjectAnalyze.sh
+@@ -10,9 +10,9 @@ getInformation(){	#A simple function used to grab time and username. I wrote it
+ 	return
+ }
+ 
+-checkUpdate(){	#This is required functionality 1, which is supposed to check if the repo is up-to-date or not. I don't want to see untracked files so I used -uno here.
++checkUpdate(){	#This is required functionality 1, which is supposed to check if the repo is up-to-date or not. 
+ 	echo "-------------------------------------------------------------"
+-	git fetch && git status -uno
++	git fetch && git status -uno	#Don't want to see untracked files, so I use -uno here.
+ 	echo "-------------------------------------------------------------"
+ 	hold
+ }
+@@ -21,14 +21,14 @@ checkUpdate(){	#This is required functionality 1, which is supposed to check if
+ uncommited(){	#This is required functionality 2, which is to grab all uncommited changes and put it into "changes.log". It allows user to see the log immediately if they want. Information from git status and git diff are both recorded.  
+ 	echo "-------------------------------------------------------------"
+ 	echo "Putting all uncommited changes into the file changes.log."
+-	theDate=$(date) && echo $theDate$'\n' >> changes.log	
++	theDate=$(date) && echo $theDate$'\n' >> changes.log	#Since it's a log, I would say including time for each record is nice.	
+ 	git fetch && git status -uno >> changes.log
+ 	echo $'\n' >> changes.log
+ 	git diff >> changes.log	
+ 	echo "Jobs done."
+ 	echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+-	if [[ "$seeLog" =~ ^(y|yes)$ ]]
++	if [[ "$seeLog" =~ ^(y|yes)$ ]]	#Either y,Y,yes or YES will work. Receiving other characters will return nothing.
+ 	then
+ 	echo "---------------------HEAD OF LOG-----------------------------"
+ 		cat changes.log
+@@ -42,12 +42,12 @@ uncommited(){	#This is required functionality 2, which is to grab all uncommited
+ extractTODO(){	#This is required functionality 3. It looks into all files, find lines with #TODO (case sensitive), and output them into "todo.log".
+ 	echo "-------------------------------------------------------------"
+ 	echo "Extracting all lines with #TODO in the repository to the todo.log file."
+-	if [ -e todo.log ]
++	if [ -e todo.log ]	#Check if the todo.log already exists. If it does, delete it.
+ 	then
+ 		rm todo.log
+ 		echo "todo.log already exists. Removing it and creating a new one..."
+ 	fi
+-	grep -rh --exclude={*.log,ProjectAnalyze.sh} '#TODO' *  > todo.log
++	grep -rh --exclude={*.log,ProjectAnalyze.sh} '#TODO' *  > todo.log	#This script itself won't be included, and any .log files won't be searched. I only want #TODOs with actual meaning, not the ones in code or logs.
+ 	echo "Jobs done."
+ 	echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+@@ -92,14 +92,14 @@ main(){	#This is main. It shows time and username, and prints the main menu.
+ 		1) subMenu1;;
+ 		2) subMenu2;;
+ 		3) break;;
+-		*) ;;
++		*) ;;	#For any unexpected input, continue the loop.
+ 	esac
+ 	done
+ }
+ seeCourse(){	#This is the first feature of my own design. It grabs information from 1XA3 course page, and returns course schedule or grading scheme. 
+ 	read -p $'Please enter a number:\n1.See course schedule.\n2.See grading scheme.\n> ' choice3
+         case "$choice3" in
+-                1) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '35,57p' && hold;;
++                1) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '35,57p' && hold;;	#It grabs the course page and cut information between certain lines. 
+                 2) lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n '58,66p' && hold;;
+ 		*) ;;
+ 	esac
+@@ -110,7 +110,7 @@ seeGrade(){	#This is the second feature of mine. It looks for our 1XA3 grades, p
+         echo "-------------------------------------------------------------"
+ 	L1=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '7 Marks' | cut -f1 -d:)
+ 	L2=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '400160537' | cut -f1 -d:)	
+-	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p'
++	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p'	#It looks for two keywords, returns their line numbers as variables, and pass these variables into sed to cut out the lines I want. This will always work even new contents are added onto the webpage, since it looks for the lines dynamically instead of using static line numbers.
+         echo "-------------------------------------------------------------"
+ 	read -p 'Do you want to export the grades?(Y/N)'$'\n' decision
+ 	if [[ "$decision" =~ ^(y|yes)$ ]]
+@@ -120,14 +120,14 @@ seeGrade(){	#This is the second feature of mine. It looks for our 1XA3 grades, p
+ 		rm Grades.txt
+ 		echo "Grades.txt already exists. Removing it and creating a new one..."
+ 	fi	
+-	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p' > Grades.txt	
++	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p' > Grades.txt	#If the user wants, the script will output the grades into Grades.txt.	
+ 	fi
+ 	echo "Done."	
+ 	hold	
+ }
+ 
+ subMenu1(){	#This is the first sub-menu who works for the required features. Nothing special here.
+-	read -p $'Please enter a number:\n1.Check if you repo is up to date.\n2.Ouput uncommited changes.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice2
++	read -p $'Please enter a number:\n1.Check if your repo is up to date.\n2.Ouput uncommited changes.\n3.Find and output all TODOs in the project.\n4.Check and output Haskell errors.\n> ' choice2
+         case "$choice2" in
+                 1) checkUpdate;;
+                 2) uncommited;;
+@@ -141,7 +141,7 @@ backUp(){	#This is the third feature of my own. It backups the whole repository
+ 	echo "Starting the back-up process.."
+ 	cp -R ~/CS1XA3 ~/BackUp
+ 	tar czvf ~/Backup.tar.gz ~/BackUp
+-	rm -rf ~/BackUp
++	rm -rf ~/BackUp	#For safety, I won't modify the original directory. I copy it, zip the copy, and remove the copy.
+ 	echo "Back-up finished. You can now see the file \"Backup.tar.gz\" under your home directory."
+ 	hold	
+ }
+@@ -157,4 +157,4 @@ subMenu2(){	#This is the 2nd sub-menu who works for the cutomized features. Noth
+ 	esac
+ }	
+ 
+-main	#main is the only function called when you start the script.
++main	#main is the only function called when script started.
+diff --git a/error.log b/error.log
+index 0edf80c..0db8424 100644
+--- a/error.log
++++ b/error.log
+@@ -1,28 +1,5 @@
+ 
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-
+-HaskellFileWithErr.hs:3:15:
+-    Couldn't match expected type ‘Int’ with actual type ‘Char’
+-    In the expression: 'A'
+-    In an equation for ‘function1’: function1 3 = 'A'
+-
+-Labs/Bash02/Bash02.hs:1:1:
+-    The IO action ‘main’ is not defined in module ‘Main’
+-Fri Feb 23 09:47:16 EST 2018
++Sat Feb 24 13:25:42 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -32,6 +9,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
++Sat Feb 24 13:33:45 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -41,7 +19,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-$theDate
++Sat Feb 24 15:39:55 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -51,7 +29,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 09:49:32 EST 2018
++Sat Feb 24 16:28:42 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -61,7 +39,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 10:44:23 EST 2018
++Sat Feb 24 17:13:27 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+@@ -71,7 +49,7 @@ HaskellFileWithErr.hs:3:15:
+ Labs/Bash02/Bash02.hs:1:1:
+     The IO action ‘main’ is not defined in module ‘Main’
+ 
+-Fri Feb 23 11:00:22 EST 2018
++Sat Feb 24 17:15:03 EST 2018
+ 
+ HaskellFileWithErr.hs:3:15:
+     Couldn't match expected type ‘Int’ with actual type ‘Char’
+diff --git a/todo.log b/todo.log
+index 65fd9d0..40b91b1 100644
+--- a/todo.log
++++ b/todo.log
+@@ -1,6 +1,5 @@
+-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
+-	grep -rh '#TODO' * > todo.log
+ I plug a #TODO here.
+ Another #TODO there.
+ #TODO in the front.
+ I love #TODOs.
++     * Puts each line from every file of your project with the tag #TODO

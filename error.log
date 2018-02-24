@@ -1,11 +1,5 @@
 
-HaskellFileWithErr.hs:3:15:
-    Couldn't match expected type ‘Int’ with actual type ‘Char’
-    In the expression: 'A'
-    In an equation for ‘function1’: function1 3 = 'A'
-
-Labs/Bash02/Bash02.hs:1:1:
-    The IO action ‘main’ is not defined in module ‘Main’
+Sat Feb 24 13:25:42 EST 2018
 
 HaskellFileWithErr.hs:3:15:
     Couldn't match expected type ‘Int’ with actual type ‘Char’
@@ -15,14 +9,7 @@ HaskellFileWithErr.hs:3:15:
 Labs/Bash02/Bash02.hs:1:1:
     The IO action ‘main’ is not defined in module ‘Main’
 
-HaskellFileWithErr.hs:3:15:
-    Couldn't match expected type ‘Int’ with actual type ‘Char’
-    In the expression: 'A'
-    In an equation for ‘function1’: function1 3 = 'A'
-
-Labs/Bash02/Bash02.hs:1:1:
-    The IO action ‘main’ is not defined in module ‘Main’
-Fri Feb 23 09:47:16 EST 2018
+Sat Feb 24 13:33:45 EST 2018
 
 HaskellFileWithErr.hs:3:15:
     Couldn't match expected type ‘Int’ with actual type ‘Char’
@@ -32,6 +19,7 @@ HaskellFileWithErr.hs:3:15:
 Labs/Bash02/Bash02.hs:1:1:
     The IO action ‘main’ is not defined in module ‘Main’
 
+Sat Feb 24 15:39:55 EST 2018
 
 HaskellFileWithErr.hs:3:15:
     Couldn't match expected type ‘Int’ with actual type ‘Char’
@@ -41,7 +29,7 @@ HaskellFileWithErr.hs:3:15:
 Labs/Bash02/Bash02.hs:1:1:
     The IO action ‘main’ is not defined in module ‘Main’
 
-$theDate
+Sat Feb 24 16:28:42 EST 2018
 
 HaskellFileWithErr.hs:3:15:
     Couldn't match expected type ‘Int’ with actual type ‘Char’
@@ -51,7 +39,7 @@ HaskellFileWithErr.hs:3:15:
 Labs/Bash02/Bash02.hs:1:1:
     The IO action ‘main’ is not defined in module ‘Main’
 
-Fri Feb 23 09:49:32 EST 2018
+Sat Feb 24 17:13:27 EST 2018
 
 HaskellFileWithErr.hs:3:15:
     Couldn't match expected type ‘Int’ with actual type ‘Char’
@@ -61,7 +49,7 @@ HaskellFileWithErr.hs:3:15:
 Labs/Bash02/Bash02.hs:1:1:
     The IO action ‘main’ is not defined in module ‘Main’
 
-Fri Feb 23 10:44:23 EST 2018
+Sat Feb 24 17:15:03 EST 2018
 
 HaskellFileWithErr.hs:3:15:
     Couldn't match expected type ‘Int’ with actual type ‘Char’
@@ -71,7 +59,7 @@ HaskellFileWithErr.hs:3:15:
 Labs/Bash02/Bash02.hs:1:1:
     The IO action ‘main’ is not defined in module ‘Main’
 
-Fri Feb 23 11:00:22 EST 2018
+Sat Feb 24 17:17:37 EST 2018
 
 HaskellFileWithErr.hs:3:15:
     Couldn't match expected type ‘Int’ with actual type ‘Char’
