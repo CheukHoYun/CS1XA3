@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #As an experienced (not really) functional programmer, I decided to put each functionality under a function.
-#I will create a main function to make a list of functionality and let users to choose from.  
+#I will create a main function to make a list of functionality and let users to choose from. 
+ 
 
 getInformation(){
 	theDate=$(date) && echo "The date today is: $theDate"
@@ -10,25 +11,73 @@ getInformation(){
 	return
 }
 
+checkUpdate(){
+	echo "-------------------------------------------------------------"
+	git fetch && git status -uno
+	echo "-------------------------------------------------------------"
+        read -n1 -r -p "Press any key to return to main menu..." key	
+}
+
 
 uncommited(){
+	echo "-------------------------------------------------------------"
 	echo "Putting all uncommited changes into the file changes.log."
-	theDate=$(date) && echo $'\n'$theDate >> changes.log	
-	git fetch && git status -uno >> changes.log	
+	theDate=$(date) && echo $theDate$'\n' >> changes.log	
+	git fetch && git status -uno >> changes.log
+	echo $'\n' >> changes.log
+	git diff >> changes.log	
+	echo "Jobs done."
+	echo "-------------------------------------------------------------"
+	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+	if [[ "$seeLog" =~ ^(y|yes)$ ]]
+	then
+	echo "---------------------HEAD OF LOG-----------------------------"
+		cat changes.log
+	echo "----------------------END OF LOG-----------------------------"
+	
+	fi
+        read -n1 -r -p "Press any key to return to main menu..." key
 
 
 }
 
 extractTODO(){
-	echo "Extracting all lines with #TODO in the repository to the todo.log file. This process is case-sensitive."
+	echo "-------------------------------------------------------------"
+	echo "Extracting all lines with #TODO in the repository to the todo.log file."
 	rm todo.log
 	grep -rh '#TODO' * > todo.log
+	echo "Jobs done."
+	echo "-------------------------------------------------------------"
+	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+	if [[ "$seeLog" =~ ^(y|yes)$ ]]
+	then
+	echo "---------------------HEAD OF LOG-----------------------------"
+		cat todo.log
+	echo "----------------------END OF LOG-----------------------------"
+	fi
+        read -n1 -r -p "Press any key to return to main menu..." key
+
+
 }
 
 findHaskellError(){
+	echo "-------------------------------------------------------------"
 	echo "Searching for errors in Haskell files in repository. You will find the errors in error.log."
 	theDate=$(date) && echo $'\n'$theDate >> error.log	
 	find . -name "*.hs" -exec ghc -fno-code {} \; 2>> error.log	
+	echo "Jobs done."
+	echo "-------------------------------------------------------------"
+	read -p 'Do you want to see the log now?(Y/N)'$'\n' seeLog
+	if [[ "$seeLog" =~ ^(y|yes)$ ]]
+	then
+	echo "---------------------HEAD OF LOG-----------------------------"
+		cat error.log
+	echo "----------------------END OF LOG-----------------------------"
+	
+	fi
+        read -n1 -r -p "Press any key to return to main menu..." key
+
+
 }
 
 main(){
