@@ -45,4 +45,4 @@ Type in '3' and you will exit the program.
 *   https://stackoverflow.com/questions/3258243/check-if-pull-needed-in-git
 *   https://stackoverflow.com/questions/5683367/how-to-cropcut-text-files-based-on-starting-and-ending-line-numbers-in-cygwin
 *   http://www.cas.mcmaster.ca/~dalvescb
-No code was directly copy&pasted, but I wouldn't be able to finish this script without the help of above websites.
+*   No code was directly copy&pasted, but I wouldn't be able to finish this script without the help of above websites.
