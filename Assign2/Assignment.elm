@@ -271,8 +271,8 @@ view model =
         False ->
             --The game hasn't started yet. Draw the basics, cover the game scene with a half-transparent white color.
             Html.body [ Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "height", "1000px" ), ( "width", "100%" ), ( "padding", "0" ), ( "margin", "0" ) ] ]
-                [ Html.h1 [ align "center", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "font-family", "Comic Sans MS" ) ] ]
-                    [ text "Flappy Pixel" ]
+                [ Html.h1 [ align "right", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "font-family", "Comic Sans MS" ) ] ]
+                    [ text "==Flappy Pixel==" ]
                 , Html.div [ Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ) ] ]
                     [ Html.img
                         [ src "https://i.imgur.com/B6cjYlr.png", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "position", "absolute" ), ( "top", "0px" ), ( "left", "0px" ) ] ]
@@ -299,8 +299,8 @@ view model =
                         tubeTimeToPos model.tubeTime n
                 in
                     Html.body [ Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "height", "1000px" ), ( "width", "100%" ), ( "padding", "0" ), ( "margin", "0" ) ] ]
-                        [ Html.h1 [ align "center", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "font-family", "Comic Sans MS" ) ] ]
-                            [ text "Flappy Pixel" ]
+                        [ Html.h1 [ align "right", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "font-family", "Comic Sans MS" ) ] ]
+                            [ text "==Flappy Pixel==" ]
                         , Html.div []
                             [ Html.img
                                 [ src "https://i.imgur.com/B6cjYlr.png", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "position", "absolute" ), ( "top", "0px" ), ( "left", "0px" ) ] ]
@@ -334,8 +334,8 @@ view model =
                         tubeTimeToPos model.tubeTime n
                 in
                     Html.body [ Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "height", "1000px" ), ( "width", "100%" ), ( "padding", "0" ), ( "margin", "0" ) ] ]
-                        [ Html.h1 [ align "center", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "font-family", "Comic Sans MS" ) ] ]
-                            [ text "Flappy Pixel" ]
+                        [ Html.h1 [ align "right", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "margin", "0" ), ( "font-family", "Comic Sans MS" ) ] ]
+                            [ text "==Flappy Pixel==" ]
                         , Html.div []
                             [ Html.img
                                 [ src "https://i.imgur.com/B6cjYlr.png", Html.Attributes.style [ ( "background", "linear-gradient(to bottom, #4dc0c9 0%, #d5d38e 130%)" ), ( "position", "absolute" ), ( "top", "0px" ), ( "left", "0px" ) ] ]
