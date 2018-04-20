@@ -16,7 +16,7 @@ This is a simple math library with an expression datatype that can encode additi
 2. It can do partial differentiation flawlessly. No matter how many variables are inside the expression, you always get what you should get. After some effort, it can now work on the expression even if you have x on both base and exponent. The result may look messy, but it works!
 
 ## Known Issue ##
-1. The parser does not accept spaces or parens, and if it will not process * before +. That is to say, something like a+b*c will be parsed as (Mult (Add (a) (b)) (c)), which isn't what it should look like.
+1. The parser does not accept spaces or parens, and it will not process * before +. That is to say, something like a+b*c will be parsed as (Mult (Add (a) (b)) (c)), which isn't what it should look like.
 2. It may take quite a while (or forever) if trying to simplify high-power expressions, because the program uses a recursive definition to break all exponential expressions into multiples.
 
 

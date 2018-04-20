@@ -119,6 +119,7 @@ instance (Num a, Eq a, Ord a, SafeMath a) => DiffExpr a where
     simplify vrs (Exp e1) = case (areThere vrs (getVars e1)) of
                             True -> (Const (eval vrs (Exp e1)))
                             False -> (Exp (simplify vrs e1))
+
 {- Special simplify methods for Pow. -}
     simplifyPow vrs (Pow (Const a) (Const b)) = (Const (eval vrs (Pow (Const a) (Const b))))               -- a^b where a, b are numbers. Calculate the result and wrap it as a constant.
     simplifyPow vrs (Pow e1 (Const 0)) = case (e1 == (Const 0)) of                                         -- Anything with power 0 should be 1, except 0 itself.
@@ -128,7 +129,7 @@ instance (Num a, Eq a, Ord a, SafeMath a) => DiffExpr a where
     simplifyPow vrs (Pow (Var x) n) = (Pow (Var x) n)                                                      -- Keep the power sign and don't simplify forms like x^a. It looks better than x*x*x...
     simplifyPow vrs (Pow e1 (Const n)) = simplify vrs (Mult (simplifyPow vrs (Pow e1 (Const (n-1)))) e1)   -- Some expression that is not a variable to power `a` should be expanded. E.g. (cos(x)+2y+z^3)^2 = (cos(x)+2y+z^3) * (cos(x)+2y+z^3), and then it will be simplified by Mult rules. (See below)
     simplifyPow vrs (Pow e1 e2) = (Pow e1 e2)                                                              -- Last resort: If we can't apply any of the above rules, return what it is.
----------------------------------------------------------------------------------------------------------------
+
 {- Special simplify methods for Add. -}
     simplifyAdd vrs (Add (Const a) (Const b)) =  (Const (a+b))                                             -- (a+b) where a, b are numbers, Calculate the result and wrap it as a constant.
     simplifyAdd vrs (Add (Const 0) e1) = e1                                                                -- simplify anything with form (0+x) to x. We don't want redundant 0s in simplified form.
@@ -161,6 +162,7 @@ instance (Num a, Eq a, Ord a, SafeMath a) => DiffExpr a where
     simplifyAdd vrs (Add e1 e2) = case (e1==e2) of                                                         -- Last resort: if none of the rules above can be applied, see if the addends are the same. If they are, time it by two; if they aren't, return the original expression.
                                   True -> (Mult (Const 2) e1)
                                   False -> (Add e1 e2)
+                                  
 {- Special simplify methods for Mult type. -}
     simplifyMult vrs (Mult e1 (Const 1)) = e1                                                              -- Anything times one should be itself. Cuts redundant 1s.
     simplifyMult vrs (Mult (Const 1) e1) = e1                                                              -- Same as above.
