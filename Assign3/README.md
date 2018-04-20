@@ -13,7 +13,7 @@ This is a simple math library with an expression datatype that can encode additi
 
 ## What's Special ##
 1. It actually simplifies the expression! The expression will look exactly like what you usually write. You won't see anything like (x^2+x^2), (x*x^2), (0*x), (x*1), (1+x)*(x+5).. Or ANYTHING not simplified thoroughly! Basically, all expressions will be expanded and calculated until they are actually in the simpliest form.
-2. It can do partial differentiation flawlessly. No matter how many variables are inside the expression, you always get what you should get. After some effort, it can now work on both
+2. It can do partial differentiation flawlessly. No matter how many variables are inside the expression, you always get what you should get. After some effort, it can now work on the expression even if you have x on both base and exponent. The result may look messy, but it works!
 
 ## Known Issue ##
 1. The parser does not accept spaces or parens, and if it will not process * before +. That is to say, something like a+b*c will be parsed as (Mult (Add (a) (b)) (c)), which isn't what it should look like.
