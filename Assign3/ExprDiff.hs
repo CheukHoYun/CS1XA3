@@ -121,10 +121,11 @@ instance (Num a, Eq a, Ord a, SafeMath a) => DiffExpr a where
                             False -> (Exp (simplify vrs e1))
 
 {- Special simplify methods for Pow. -}
+    simplifyPow vrs (Pow (Const 0) (Const a))
+        | (a>0) = Const 0
+        | otherwise = error "0's negative power is undefined."
     simplifyPow vrs (Pow (Const a) (Const b)) = (Const (eval vrs (Pow (Const a) (Const b))))               -- a^b where a, b are numbers. Calculate the result and wrap it as a constant.
-    simplifyPow vrs (Pow e1 (Const 0)) = case (e1 == (Const 0)) of                                         -- Anything with power 0 should be 1, except 0 itself.
-                                 True -> error "0 power of 0 is undefined."
-                                 False -> Const 1
+    simplifyPow vrs (Pow e1 (Const 0)) = Const 1
     simplifyPow vrs (Pow e1 (Const 1)) = e1                                                                -- Anything with power 1 should be itself.
     simplifyPow vrs (Pow (Var x) n) = (Pow (Var x) n)                                                      -- Keep the power sign and don't simplify forms like x^a. It looks better than x*x*x...
     simplifyPow vrs (Pow e1 (Const n)) = simplify vrs (Mult (simplifyPow vrs (Pow e1 (Const (n-1)))) e1)   -- Some expression that is not a variable to power `a` should be expanded. E.g. (cos(x)+2y+z^3)^2 = (cos(x)+2y+z^3) * (cos(x)+2y+z^3), and then it will be simplified by Mult rules. (See below)
@@ -162,7 +163,7 @@ instance (Num a, Eq a, Ord a, SafeMath a) => DiffExpr a where
     simplifyAdd vrs (Add e1 e2) = case (e1==e2) of                                                         -- Last resort: if none of the rules above can be applied, see if the addends are the same. If they are, time it by two; if they aren't, return the original expression.
                                   True -> (Mult (Const 2) e1)
                                   False -> (Add e1 e2)
-                                  
+
 {- Special simplify methods for Mult type. -}
     simplifyMult vrs (Mult e1 (Const 1)) = e1                                                              -- Anything times one should be itself. Cuts redundant 1s.
     simplifyMult vrs (Mult (Const 1) e1) = e1                                                              -- Same as above.
@@ -178,9 +179,9 @@ instance (Num a, Eq a, Ord a, SafeMath a) => DiffExpr a where
     simplifyMult vrs (Mult (Pow (Var y) a) (Var x)) = case (x==y) of
                                                       True -> simplify vrs (Pow (Var y) (Add (Const 1) (a)))
                                                       False -> (Mult (Var x) (Pow (Var y) a))
-    -- simplifyMult vrs (Mult (Pow x1 n1) (Pow x2 n2)) = case (x1==x2) of                                     -- If there are two same power expressions (A Pow expression must have power >=2), combine them and make it a higher power statement. It will be simplified using the Pow rules above.
-    --                                                     True -> simplify vrs (Pow x1 (Add n1 n2))
-    --                                                     False -> (Mult (Pow x1 n1) (Pow x2 n2))
+    simplifyMult vrs (Mult (Pow x1 n1) (Pow x2 n2)) = case (x1==x2) of                                     -- If there are two same power expressions (A Pow expression must have power >=2), combine them and make it a higher power statement. It will be simplified using the Pow rules above.
+                                                        True -> simplify vrs (Pow x1 (Add n1 n2))
+                                                        False -> (Mult (Pow x1 n1) (Pow x2 n2))
     simplifyMult vrs (Mult e1 (Mult e2 e3)) = if (simplifiable vrs (Mult e1 e2)) then (simplify vrs (Mult (Mult e1 e2) e3)) -- Using commutative property to thoroughly simplify expressions. Logic same as commutative property in Add. See above.
                                            else if (simplifiable vrs (Mult e1 e3)) then (simplify vrs (Mult (Mult e1 e3) e2))
                                            else (Mult e1 (Mult e2 e3))
