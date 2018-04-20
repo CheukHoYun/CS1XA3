@@ -1,9 +1,9 @@
-#Assignment 3#
+# Assignment 3 #
 
-##Overview##
+## Overview ##
 This is a simple math library with an expression datatype that can encode addition, multiplication, cos, sin, log, exp, variables and constants.
 
-##Functions##
+## Functions ##
 1. The program can evaluate an expression with variable names given in map. Returns an error if any variable cannot be found. (`eval`)
 2. The program can simplify the expression to a natural, hand-written form. (`simplify`)
 3. The program can perform partial differentiation on the expression, with the variable name given in `String`. (`partDiff`)
@@ -11,16 +11,16 @@ This is a simple math library with an expression datatype that can encode additi
 -   Be made up with numbers, variables and operators. It can only contain either (+,-,^) or (cos, sin, e^, ln).
 -   Not containing any spaces or brackets.
 
-#What's Special#
+## What's Special ##
 1. It actually simplifies the expression! The expression will look exactly like what you usually write. You won't see anything like (x^2+x^2), (x*x^2), (0*x), (x*1), (1+x)*(x+5).. Or ANYTHING not simplified thoroughly! Basically, all expressions will be expanded and calculated until they are actually in the simpliest form.
 2. It can do partial differentiation flawlessly. No matter how many variables are inside the expression, you always get what you should get. After some effort, it can now work on both
 
-#Known Issue#
+## Known Issue ##
 1. The parser does not accept spaces or parens, and if it will not process * before +. That is to say, something like a+b*c will be parsed as (Mult (Add (a) (b)) (c)), which isn't what it should look like.
 2. It may take quite a while (or forever) if trying to simplify high-power expressions, because the program uses a recursive definition to break all exponential expressions into multiples.
 
 
-Thanks to:
+## Thanks to: ##
 - Noa Barsky (https://github.com/barskyn) The test cases are grabbed from her code, and the idea of parsing is based on her work.
 - https://stackoverflow.com/questions/6009384/exception-handling-in-haskell
 - https://stackoverflow.com/questions/20807795/haskell-conflicting-definitions-when-instancing/20807908
