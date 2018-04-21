@@ -3,6 +3,9 @@
 ## Overview ##
 This is a simple math library with an expression datatype that can encode addition, multiplication, cos, sin, log, exp, variables and constants.
 
+## Docs Link ##
+https://yunc5.github.io/CS1XA3/
+
 ## Functions ##
 1. The program can evaluate an expression with variable names given in map. Returns an error if any variable cannot be found. (`eval`)
 2. The program can simplify the expression to a natural, hand-written form. (`simplify`)
