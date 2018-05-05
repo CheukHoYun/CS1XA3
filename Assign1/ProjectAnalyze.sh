@@ -109,7 +109,7 @@ seeCourse(){	#This is the first feature of my own design. It grabs information f
 seeGrade(){	#This is the second feature of mine. It looks for our 1XA3 grades, print it, and outputs it into a .txt file if the user wants to.
         echo "-------------------------------------------------------------"
 	L1=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '7 Marks' | cut -f1 -d:)
-	L2=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -n '400160537' | cut -f1 -d:)	
+	L2=$(lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | grep -m 1 -n 'Author: Curtis D' | cut -f1 -d:)	
 	lynx -dump http://www.cas.mcmaster.ca/~dalvescb/ | sed -n "$L1"','"$L2"'p'	#It looks for two keywords, returns their line numbers as variables, and pass these variables into sed to cut out the lines I want. This will always work even new contents are added onto the webpage, since it looks for the lines dynamically instead of using static line numbers.
         echo "-------------------------------------------------------------"
 	read -p 'Do you want to export the grades?(Y/N)'$'\n' decision
