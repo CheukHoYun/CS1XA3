@@ -1,4 +1,5 @@
 # Assignment 2 - Elm Architecture
+View project here: http://ugweb.cas.mcmaster.ca/~yunc5/
 
 ## Part 1 - CV Page
 It's just a simple CV page I made from templates.
