@@ -1,7 +1,7 @@
 # Assignment 3 #
 
 ## Overview ##
-This is a simple math library with an expression datatype that can encode addition, multiplication, cos, sin, log, exp, variables and constants.
+This is a math library with an expression datatype that can encode addition, multiplication, cos, sin, log, exp, variables and constants. It also provides simple parsing features for such expressions. 
 
 ## Docs Link ##
 https://yunc5.github.io/CS1XA3/
@@ -11,7 +11,7 @@ https://yunc5.github.io/CS1XA3/
 2. The program can simplify the expression to a natural, hand-written form. (`simplify`)
 3. The program can perform partial differentiation on the expression, with the variable name given in `String`. (`partDiff`)
 4. The program can take in some string and try to turn it into an expression. The expression must:
--   Be made up with numbers, variables and operators. It can only contain either (+,-,^) or (cos, sin, e^, ln).
+-   Be made up with numbers, variables and operators. Operators can only be either (+,-,^) or (cos, sin, e^, ln).
 -   Not containing any spaces or brackets.
 
 ## What's Special ##
