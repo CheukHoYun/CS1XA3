@@ -1,4 +1,5 @@
 # Assignment 1
+## A bash script that helps updating course info from course webpage, and to check if my repository for the course is up-to-date.
 ## Required features
 *	Check if the repo is up-to-date.
 *	Output all uncommited changes into changes.log.
