@@ -1,5 +1,8 @@
 # Assignment 2 - Elm Architecture
+## Part 1 is a simple CV page show my knowledge in HTML and CSS. 
+## Part 2 is a simple game coded in Elm, to show my skill in Elm architecture. 
 View project here: http://ugweb.cas.mcmaster.ca/~yunc5/
+(Might be unavailable when not using McMaster network. Try https://htmlpreview.github.io/?https://github.com/CheukHoYun/CS1XA3/blob/master/Assign2/Assignment.html to see the game page. )
 
 ## Part 1 - CV Page
 It's just a simple CV page I made from templates.
